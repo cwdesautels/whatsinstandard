@@ -1,8 +1,8 @@
 require.config({
     paths: {
         app: 'js/app',
-        jquery: 'http://code.jquery.com/jquery-1.10.1.min',
-        bootstrap: 'js/libs/bootstrap.min'
+        jquery: 'http://cwdesautels.github.io/libs/js/jquery-1.10.2.min',
+        bootstrap: 'http://cwdesautels.github.io/libs/js/bootstrap-3.0.0.min'
     }
 });
 
