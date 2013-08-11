@@ -7,6 +7,10 @@ require.config({
         app: 'app',
         scrapper: 'scrapper',
         util: 'util'
+    },
+    shim: {
+        // CORS hack
+        'jquery.xdomainajax': ['jquery']
     }
 });
 
@@ -21,7 +25,11 @@ require([
     Scrapper.scrap({
         url: Utils.legalSetUrl
     }, function(e, payload) {
-        console.log(e);
-        console.log(payload);
+        if (e) {
+            console.log(e);
+        }
+        else {
+            console.log(payload);
+        }
     });
 });

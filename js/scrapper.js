@@ -1,17 +1,23 @@
 define([
-    'jquery'
+    'jquery',
+    'jquery.xdomainajax'
 ], function($) {
-    var Scrapper = function(){
-
-    };
-
-    Scrapper.prototype.scrap = function(properties, callback) {
-        if (typeof callback === 'function') {
-            callback.call(this, undefined, {
-                asdasd: properties.url
-            })
+    return {
+        scrap: function(properties, callback) {
+            $.ajax({
+                url: properties.url,
+                type: 'GET',
+                success: function(response) {
+                    callback.call(this, undefined, {
+                        url: properties.url
+                    });
+                    console.log(response);
+                },
+                error: function(response) {
+                    callback.call(this, 'XHR failed at URL: ' + properties.url);
+                    console.log(response);
+                }
+            });
         }
     };
-
-    return new Scrapper();
 });
