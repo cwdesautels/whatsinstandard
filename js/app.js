@@ -1,23 +1,27 @@
 require.config({
     paths: {
-        app: 'app',
+        // Libs via Github CDN
         jquery: 'http://cwdesautels.github.io/libs/js/jquery-1.10.2.min',
         bootstrap: 'http://cwdesautels.github.io/libs/js/bootstrap-3.0.0.min',
-        scrapper: 'scrapper'
+        // Local app modules
+        app: 'app',
+        scrapper: 'scrapper',
+        util: 'util'
     }
 });
 
-// Start the main app logic.
+// Start the main app logic
 require([
     'jquery',
-    'scrapper'
-], function ($, Scrapper) {
+    'scrapper',
+    'util'
+], function ($, Scrapper, Utils) {
     console.log("App Initialized");
 
-    var cb = function(e, payload) {
+    Scrapper.scrap({
+        url: Utils.legalSetUrl
+    }, function(e, payload) {
         console.log(e);
         console.log(payload);
-    };
-
-    Scrapper.scrap({}, cb);
+    });
 });

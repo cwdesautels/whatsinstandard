@@ -8,7 +8,7 @@ define([
     Scrapper.prototype.scrap = function(properties, callback) {
         if (typeof callback === 'function') {
             callback.call(this, undefined, {
-                asdasd: "ASDASD"
+                asdasd: properties.url
             })
         }
     };
