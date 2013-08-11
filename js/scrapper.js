@@ -9,13 +9,12 @@ define([
                 type: 'GET',
                 success: function(response) {
                     callback.call(this, undefined, {
-                        url: properties.url
+                        url: properties.url,
+                        sets: response.responseText.search(properties.regex)
                     });
-                    console.log(response);
                 },
                 error: function(response) {
                     callback.call(this, 'XHR failed at URL: ' + properties.url);
-                    console.log(response);
                 }
             });
         }

@@ -23,7 +23,8 @@ require([
     console.log("App Initialized");
 
     Scrapper.scrap({
-        url: Utils.legalSetUrl
+        url: Utils.legalSetUrl,
+        regex: Utils.legalSetRegex
     }, function(e, payload) {
         if (e) {
             console.log(e);
