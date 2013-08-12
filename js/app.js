@@ -6,7 +6,7 @@ require.config({
         // Local app modules
         app: 'app',
         scrapper: 'scrapper',
-        util: 'util'
+        urls: 'urls'
     },
     shim: {
         // CORS hack
@@ -18,14 +18,13 @@ require.config({
 require([
     'jquery',
     'scrapper',
-    'util'
-], function ($, Scrapper, Utils) {
+    'urls'
+], function ($, Scrapper, Urls) {
     console.log("App Initialized");
 
     // Scrap legal set data off of url constant with stored regex
     Scrapper.scrap({
-        url: Utils.legalSetUrl,
-        regex: Utils.legalSetRegex
+        url: Urls.legalSetUrl
     }, function(e, payload) {
         if (e) {
             console.log(e);
