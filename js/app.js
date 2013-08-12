@@ -22,6 +22,7 @@ require([
 ], function ($, Scrapper, Utils) {
     console.log("App Initialized");
 
+    // Scrap legal set data off of url constant with stored regex
     Scrapper.scrap({
         url: Utils.legalSetUrl,
         regex: Utils.legalSetRegex
@@ -30,7 +31,7 @@ require([
             console.log(e);
         }
         else {
-            console.log(payload);
+            console.log(JSON.stringify(payload));
         }
     });
 });

@@ -8,13 +8,21 @@ define([
                 url: properties.url,
                 type: 'GET',
                 success: function(response) {
-                    callback.call(this, undefined, {
-                        url: properties.url,
-                        sets: response.responseText.search(properties.regex)
-                    });
+                    if (properties.regex.test(response.responseText)) {
+                        var result;
+
+                        while ((result = properties.regex.exec(response.responseText)) !== null) {
+                            callback.call(this, undefined, {
+                                result: result[1]
+                            });
+                        }
+                    }
+                    else {
+                        callback.call(this, 'Regex match failed for [' + properties.regex.toString() + ']');
+                    }
                 },
                 error: function(response) {
-                    callback.call(this, 'XHR failed at URL: ' + properties.url);
+                    callback.call(this, 'XHR failed at URL [' + properties.url + ']');
                 }
             });
         }
